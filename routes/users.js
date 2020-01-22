@@ -5,7 +5,7 @@ var router = express.Router();
 router.post('/allocateAndReport', function (req, res, next) {
   const { body } = req;
 
-  if (!body) {
+  if (!body || !Array.isArray(body)) {
     return res.send({});
   }
 
