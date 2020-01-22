@@ -5,6 +5,10 @@ var router = express.Router();
 router.post('/allocateAndReport', function (req, res, next) {
   const { body } = req;
 
+  if (!body) {
+    return res.send({});
+  }
+
   // sort tasks into decanding order 
   const tasks = body.sort((x, y) => y.hours - x.hours);
   const butlers = [];
@@ -38,7 +42,13 @@ router.post('/allocateAndReport', function (req, res, next) {
     }
     butlers.push(butler);
   }
-  res.send(butlers);
+
+  // convert request into required format
+  const response = {
+    butler: butlers.map(x => { return { requests: x.tasks.map(y => y.requestId) } }),
+    spreadClientIds: butlers.map(x => x.id)
+  }
+  res.send(response);
 });
 
 module.exports = router;

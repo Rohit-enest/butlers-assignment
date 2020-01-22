@@ -12,6 +12,7 @@
     <div id="root">
         <h1>Butler Assignment</h1>
         <form onsubmit="makeCall(event)">
+            <p>Request object</p>
             <textarea id="request" rows="10" cols="50">
                 [
                 {
@@ -51,10 +52,13 @@
                 }
               ]
             </textarea>
-            <button type="submit">Make request</button >
+            <button type="submit">Make request</button>
         </form>
-     <textarea id="response" rows="10" cols="50"></textarea>
-     <p>Please copy -> paste in json formatter</p>
+        <div>
+          <p>Response object</p>
+          <textarea id="response" rows="10" cols="50"></textarea>
+          <p>Please copy -> paste in json formatter</p>
+        </div>
     </div>
   </body>
 </html>
